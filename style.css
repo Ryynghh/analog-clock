@@ -1,4 +1,5 @@
-@import url("https://fonts.googlesapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +7,7 @@
   font-family: "Poppins", sans-serif;
 }
 
-:rout {
+:root {
   --primary-color: #f6f7fb;
   --white-color: #fff;
   --black-color: #18191a;
@@ -18,9 +19,21 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  background: var(--primary-color);
+}
+
+body.dark {
+  --primary-color: #242526;
+  --white-color: #18191a;
+  --black-color: #fff;
+  --red-color: #e74c3c;
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
 }
 
 .container .clock {
@@ -38,13 +51,8 @@ body {
 .clock label {
   position: absolute;
   inset: 20px;
-  background-color: var(--red-color);
   text-align: center;
   transform: rotate(calc(var(--i) * (360deg / 12)));
-  -webkit-transform: rotate(calc(var(--i) * (360deg / 12)));
-  -moz-transform: rotate(calc(var(--i) * (360deg / 12)));
-  -ms-transform: rotate(calc(var(--i) * (360deg / 12)));
-  -o-transform: rotate(calc(var(--i) * (360deg / 12)));
 }
 
 .clock label span {
@@ -59,7 +67,7 @@ body {
   position: absolute;
   height: 10px;
   width: 10px;
-  background-color: var(--red-color);
+  display: flex;
   justify-content: center;
 }
 
@@ -69,6 +77,7 @@ body {
   height: 100%;
   width: 100%;
   border-radius: 50%;
+  z-index: 100;
   background: var(--black-color);
   border: 4px solid var(--red-color);
 }
@@ -78,5 +87,31 @@ body {
   height: 130px;
   width: 4px;
   bottom: 0;
+  border-radius: 25px;
+  transform-origin: bottom;
   background: var(--red-color);
+}
+
+.hand.minute {
+  height: 120px;
+  width: 5px;
+  background: var(--black-color);
+}
+
+.hand.hour {
+  height: 100px;
+  width: 8px;
+  background: var(--black-color);
+}
+
+.mode-switch {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 22px;
+  font-weight: 400;
+  display: inline-block;
+  color: var(--white-color);
+  background: var(--black-color);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
